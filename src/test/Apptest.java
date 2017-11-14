@@ -1,3 +1,4 @@
+import org.jooq.example.db.h2.tables.pojos.Book;
 import org.jooq.example.db.h2.tables.records.BookRecord;
 import org.junit.Assert;
 import org.junit.Test;
@@ -19,8 +20,8 @@ public class Apptest {
 
     @Test
     public void test1() {
-        bookService.create(14, 1, "test title2");
-        BookRecord record = bookService.get(14);
+        bookService.create(15, 1, "test title");
+        Book record = bookService.get(15);
         Assert.assertEquals("Название не соответствует", "test title", record.getTitle());
     }
 }

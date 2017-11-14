@@ -25,7 +25,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public BookRecord get(int id) {
-        return dsl.selectFrom(BOOK).where(BOOK.ID.eq(id)).fetchOne();
+    public org.jooq.example.db.h2.tables.pojos.Book get(int id) {
+        return dsl.selectFrom(BOOK).where(BOOK.ID.eq(id)).fetchOne().into(org.jooq.example.db.h2.tables.pojos.Book.class);
     }
 }

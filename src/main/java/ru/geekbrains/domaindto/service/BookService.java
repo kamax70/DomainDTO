@@ -8,5 +8,5 @@ public interface BookService {
     @Transactional
     void create(int id, int authorId, String title);
 
-    BookRecord get(int id);
+    org.jooq.example.db.h2.tables.pojos.Book get(int id);
 }
