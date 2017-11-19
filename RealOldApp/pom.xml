@@ -28,7 +28,7 @@
         <dependency>
             <groupId>ru.geekbrains</groupId>
             <artifactId>RealOldModel</artifactId>
-            <version>1.4.7.RELEASE</version>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 

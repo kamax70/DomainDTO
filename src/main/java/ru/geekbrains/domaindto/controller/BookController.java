@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ru.geekbrains.domaindto.service.BookService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/books")
 public class BookController {
@@ -20,6 +22,13 @@ public class BookController {
             produces = {"application/json"})
     public Book getById(@PathVariable("id") Integer id) {
         return bookService.get(id);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            produces = {"application/json"})
+    public List<Book> getAll() {
+        return bookService.getAll();
     }
 
 }

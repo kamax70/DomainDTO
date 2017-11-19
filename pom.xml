@@ -2,10 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <modules>
-        <module>RealOldApp</module>
-        <module>RealOldModel</module>
-    </modules>
+
+    <version>1.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -39,7 +37,7 @@
         <dependency>
             <groupId>ru.geekbrains</groupId>
             <artifactId>RealOldModel</artifactId>
-            <version>1.4.7.RELEASE</version>
+            <version>1.0</version>
         </dependency>
 
         <dependency>

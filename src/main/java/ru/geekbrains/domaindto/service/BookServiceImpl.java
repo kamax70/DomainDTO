@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static org.jooq.example.db.h2.Tables.BOOK;
 
 @Service
@@ -13,9 +15,6 @@ public class BookServiceImpl implements BookService {
 
     @Autowired
     DSLContext dsl;
-
-    @Autowired
-    BookService bookService;
 
     @Override
     @Transactional
@@ -26,5 +25,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book get(int id) {
         return dsl.selectFrom(BOOK).where(BOOK.ID.eq(id)).fetchOne().into(Book.class);
+    }
+
+    @Override
+    public List<Book> getAll() {
+        return dsl.selectFrom(BOOK).fetchInto(Book.class);
     }
 }
