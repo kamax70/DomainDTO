@@ -15,6 +15,8 @@ import ru.geekbrains.domaindto.Application;
 import ru.geekbrains.oldapp.model.BookPrice;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,15 +42,16 @@ public class RpcTest {
 
         headers.setAll(map);
 
-        Map<String, String> req_payload = new HashMap<>();
+        Map<String, Object> req_payload = new HashMap<>();
         req_payload.put("id", "0");
-        req_payload.put("method", "oldMethod");
+        req_payload.put("method", "getPrice");
+        req_payload.put("params", Arrays.asList(1));
 
         HttpEntity<?> request = new HttpEntity<>(req_payload, headers);
 
-        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8080/oldApp/rpc/oldService", request, String.class );
+        ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8080/oldApp/rpc/oldBookPriceService", request, String.class );
         System.out.println(response.getBody());
         BookPrice bookPrice = objectMapper.readValue(response.getBody(), BookPrice.class);
-        Assert.assertEquals("Все плохо", 1, bookPrice.getA());
+        Assert.assertEquals("Все плохо", BigDecimal.TEN, bookPrice.getPrice());
     }
 }

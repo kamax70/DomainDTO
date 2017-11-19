@@ -22,7 +22,7 @@ public class Application {
         return new BookServiceImpl();
     }
 
-    @Bean(name = "/rpc/oldService")
+    @Bean(name = "/rpc/oldBookPriceService")
     public JsonServiceExporter jsonServiceExporter() {
         JsonServiceExporter exporter = new JsonServiceExporter();
         exporter.setService(myService());
