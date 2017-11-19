@@ -1,8 +1,7 @@
 package ru.geekbrains.domaindto.service;
 
 import org.jooq.DSLContext;
-import org.jooq.example.db.h2.tables.Book;
-import org.jooq.example.db.h2.tables.records.BookRecord;
+import org.jooq.example.db.h2.tables.pojos.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +24,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public org.jooq.example.db.h2.tables.pojos.Book get(int id) {
-        return dsl.selectFrom(BOOK).where(BOOK.ID.eq(id)).fetchOne().into(org.jooq.example.db.h2.tables.pojos.Book.class);
+    public Book get(int id) {
+        return dsl.selectFrom(BOOK).where(BOOK.ID.eq(id)).fetchOne().into(Book.class);
     }
 }

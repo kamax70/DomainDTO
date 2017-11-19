@@ -12,7 +12,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import ru.geekbrains.domaindto.Application;
-import ru.geekbrains.oldapp.model.OldModel;
+import ru.geekbrains.oldapp.model.BookPrice;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -35,12 +35,12 @@ public class RpcTest {
         RestTemplate restTemplate = new RestTemplate();
 
         MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        Map map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         map.put("Content-Type", "application/json");
 
         headers.setAll(map);
 
-        Map req_payload = new HashMap();
+        Map<String, String> req_payload = new HashMap<>();
         req_payload.put("id", "0");
         req_payload.put("method", "oldMethod");
 
@@ -48,7 +48,7 @@ public class RpcTest {
 
         ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8080/oldApp/rpc/oldService", request, String.class );
         System.out.println(response.getBody());
-        OldModel oldModel = objectMapper.readValue(response.getBody(), OldModel.class);
-        Assert.assertEquals("Все плохо", 1, oldModel.getA());
+        BookPrice bookPrice = objectMapper.readValue(response.getBody(), BookPrice.class);
+        Assert.assertEquals("Все плохо", 1, bookPrice.getA());
     }
 }
