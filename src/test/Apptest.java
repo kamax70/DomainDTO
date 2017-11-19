@@ -20,8 +20,8 @@ public class Apptest {
 
     @Test
     public void test1() {
-        bookService.create(15, 1, "test title");
-        Book record = bookService.get(15);
+        bookService.create(16, 1, "test title");
+        Book record = bookService.get(16);
         Assert.assertEquals("Название не соответствует", "test title", record.getTitle());
     }
 }
