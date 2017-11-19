@@ -12,6 +12,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 import ru.geekbrains.domaindto.Application;
+import ru.geekbrains.domaindto.model.RpcResult;
 import ru.geekbrains.oldapp.model.BookPrice;
 
 import java.io.IOException;
@@ -51,7 +52,8 @@ public class RpcTest {
 
         ResponseEntity<String> response = restTemplate.postForEntity( "http://localhost:8080/oldApp/rpc/oldBookPriceService", request, String.class );
         System.out.println(response.getBody());
-        BookPrice bookPrice = objectMapper.readValue(response.getBody(), BookPrice.class);
-        Assert.assertEquals("Все плохо", BigDecimal.TEN, bookPrice.getPrice());
+        RpcResult rpcResult = objectMapper.readValue(response.getBody(), RpcResult.class);
+        BookPrice bookPrice = rpcResult.getResult();
+        Assert.assertEquals( 2000d, bookPrice.getPrice(), 0);
     }
 }

@@ -12,7 +12,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public BookPrice getPrice(Long id) {
         BookPrice bookPrice = new BookPrice();
-        bookPrice.setPrice(BigDecimal.TEN); // пусть будет 10
+        bookPrice.setPrice(2000d); // пусть будет 2000
         return bookPrice;
     }
 }

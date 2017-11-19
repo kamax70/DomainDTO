@@ -1,19 +1,17 @@
 package ru.geekbrains.oldapp.model;
 
-import java.math.BigDecimal;
-
 /**
  * Created by admin on 15.11.2017.
  */
 public class BookPrice {
 
-    private BigDecimal price;
+    private double price;
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }
