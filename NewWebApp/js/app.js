@@ -179,6 +179,13 @@ var App = React.createClass({
     },
     render: function () {
         console.log('render');
+        axios.get('http://localhost:8080/myApp/books')
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         return (
             <div className='app'>
                 <Add />
